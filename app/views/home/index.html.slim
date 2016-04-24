@@ -1,0 +1,8 @@
+h1 Home#index
+p Find me in app/views/home/index.html.erb
+
+= signed_in? ? "サインイン中"  : "未ログイン"
+br
+= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
+br
+= link_to "Signout", destroy_user_session_path, method: :delete
