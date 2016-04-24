@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
+gem 'slim-rails'
 
 group :development, :test do
   gem 'byebug'
