@@ -1,10 +1,10 @@
-h1 Home#index
-p Find me in app/views/home/index.html.erb
+h1 クリエイティ部(仮)
 
-= signed_in? ? "サインイン中"  : "未ログイン"
-br
-= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
-br
-= link_to "Signout", destroy_user_session_path, method: :delete
-br
-= link_to "daily_reports", daily_reports_path
+- if signed_in?
+  = render "home/user_content"
+  div
+    = link_to "daily_reports一覧", daily_reports_path
+    br
+    = link_to "ログアウト", destroy_user_session_path, method: :delete
+- else
+  = link_to "Twitterログイン", user_omniauth_authorize_path(:twitter)

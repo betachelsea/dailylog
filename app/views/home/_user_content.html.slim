@@ -1,0 +1,8 @@
+h2 あなたの日報一覧
+p
+  = link_to '新しい日報を書く', new_daily_report_path
+
+ul
+  - current_user.daily_reports.each do |report|
+    li
+      = report.date
