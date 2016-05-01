@@ -6,7 +6,11 @@ h2 あなたの日報一覧
 p
   = link_to '新しい日報を書く', new_daily_report_path
 
-ul
+table
+  tr
+    td 日付
+    td 何をしたか
   - current_user.daily_reports.each do |report|
-    li
-      = report.date
+    tr
+      td = report.date.strftime("%F")
+      td = report.body
