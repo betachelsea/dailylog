@@ -15,7 +15,13 @@ gem 'dotenv-rails'
 gem 'slim-rails'
 
 group :development, :test do
-  gem 'byebug'
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'hirb'
+  gem 'hirb-unicode'
+  gem 'tapp'
 end
 
 group :development do
