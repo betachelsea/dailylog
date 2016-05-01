@@ -6,11 +6,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # ref. http://willschenk.com/setting-up-devise-with-twitter-and-facebook-and-other-omniauth-schemes-without-email-addresses/
   def generic_callback(provider)
-    @identity = Identity.find_for_oauth(env["omniauth.auth"])
+    auth = env["omniauth.auth"]
+    @identity = Identity.find_for_oauth(auth)
     @user = @identity.user || current_user
 
     if @user.nil?
-      @user = User.create
+      @user = User.create(name: auth.info.name, image: auth.info.image)
       @identity.update_attribute(:user_id, @user.id)
     end
 
