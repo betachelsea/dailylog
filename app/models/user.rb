@@ -3,5 +3,6 @@ class User < ActiveRecord::Base
     :omniauthable, omniauth_providers: [:twitter]
 
   has_one :identity
+  has_many :daily_reports
 
 end
