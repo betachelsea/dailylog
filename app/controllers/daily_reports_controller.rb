@@ -1,4 +1,5 @@
 class DailyReportsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
   before_action :set_daily_report, only: [:show, :edit, :update, :destroy]
 
   # GET /daily_reports
@@ -25,6 +26,7 @@ class DailyReportsController < ApplicationController
   # POST /daily_reports.json
   def create
     @daily_report = DailyReport.new(daily_report_params)
+    @daily_report.user_id = current_user.id
 
     respond_to do |format|
       if @daily_report.save
@@ -69,6 +71,6 @@ class DailyReportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def daily_report_params
-      params.require(:daily_report).permit(:date, :body, :user_id)
+      params.require(:daily_report).permit(:date, :body)
     end
 end
