@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :daily_reports
   devise_for :users, controllers: {
     omniauth_callbacks: "omniauth_callbacks",
     sessions: "sessions"
