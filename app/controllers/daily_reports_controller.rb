@@ -15,7 +15,7 @@ class DailyReportsController < ApplicationController
 
   # GET /daily_reports/new
   def new
-    @daily_report = DailyReport.new
+    @daily_report = DailyReport.new(date: DateTime.now)
   end
 
   # GET /daily_reports/1/edit

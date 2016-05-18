@@ -5,11 +5,13 @@
       ul
         - @daily_report.errors.full_messages.each do |message|
           li = message
-
-  .field
+  .form-group
     = f.label :date
-    = f.text_field :date
-  .field
+    = f.text_field :date, class: "form-control"
+  .form-group
     = f.label :body
-    = f.text_field :body
+    = f.text_field :body, class: "form-control"
   .actions = f.submit
+
+javascript:
+  $('#daily_report_date').datepicker();

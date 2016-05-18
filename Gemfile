@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'bundler', '>= 1.8.4'
+
 gem 'rails', '4.2.4'
 gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
@@ -13,6 +15,11 @@ gem 'devise'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem 'slim-rails'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-bootstrap-datepicker'
+end
 
 group :development, :test do
   gem 'pry-byebug'
