@@ -11,7 +11,8 @@
   .form-group
     = f.label :body
     = f.text_field :body, class: "form-control"
-  .actions = f.submit
+  .actions
+    = f.submit class: "btn btn-default"
 
 javascript:
   $('#daily_report_date').datepicker();
