@@ -16,6 +16,14 @@ gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem 'slim-rails'
 
+# for server
+gem 'rb-readline'
+gem 'unicorn'
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-bundler'
+gem 'capistrano-rbenv', github: 'capistrano/rbenv'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-bootstrap-datepicker'
