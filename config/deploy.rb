@@ -1,12 +1,19 @@
-# ref. https://github.com/capistrano/rails
-set :rails_env, 'staging'
-set :migration_role, :db
-set :migration_servers, -> { primary(fetch(:migration_role)) }
-set :conditionally_migrate, true
-set :assets_roles, [:web, :app]
-set :assets_prefix, 'prepackaged-assets'
-set :normalize_asset_timestamps, %w{public/images public/javascripts public/stylesheets}
-set :keep_assets, 2
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
-set :migration_role, :app
+lock '3.4.0'
+
+set :application, 'dailylog'
+set :repo_url, 'https://github.com/betachelsea/dailylog'
+
+set :branch, 'master'
+set :deploy_to, '/var/www/app/dailylog'
+set :scm, :git
+set :log_leve, :debug
+set :pty, true
+
+set :bundle_binstubs, nil
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets bundle public/system public/assets}
+set :default_env, { path: "usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH" }
+set :keep_releases, 5
+
+namespace :deploy do
+  after :finishing, 'deploy:cleanup'
+end
