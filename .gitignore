@@ -1,4 +1,5 @@
 .DS_Store
+config/deploy/development.rb
 
 ### From https://github.com/github/gitignore
 ### Rails.gitignore

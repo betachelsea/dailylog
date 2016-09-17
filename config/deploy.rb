@@ -1,4 +1,4 @@
-lock '3.4.0'
+lock '3.6.1'
 
 set :application, 'dailylog'
 set :repo_url, 'https://github.com/betachelsea/dailylog'
