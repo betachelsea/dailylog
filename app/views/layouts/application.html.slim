@@ -8,5 +8,11 @@ html
 
   body
     .container
+      h1 = link_to "日報", root_path
+      - if signed_in?
+        div
+          = image_tag current_user.image, size: "24x24", alt: "#{current_user.name} さん"
+          |#{current_user.name} さん
+    .container
       = yield
 

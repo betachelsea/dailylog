@@ -1,7 +1,3 @@
-div
-  = image_tag current_user.image, size: "24x24", alt: "#{current_user.name} さん"
-  |#{current_user.name} さん
-
 h2 あなたの日報一覧
 p
   = link_to '新しい日報を書く', new_daily_report_path, class: "btn btn-default"
