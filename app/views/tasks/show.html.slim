@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Status:
+  = @task.status
+p
+  strong Estimate hours:
+  = @task.estimate_hours
+
+= link_to 'Edit', edit_task_path(@task)
+'|
+= link_to 'Back', tasks_path

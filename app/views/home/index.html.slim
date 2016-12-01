@@ -4,4 +4,5 @@
   = render "home/user_content"
   div
     = link_to "daily_reports一覧", daily_reports_path, class: "btn btn-default"
+    = link_to "tasks一覧", tasks_path, class: "btn btn-default"
     = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-default"
