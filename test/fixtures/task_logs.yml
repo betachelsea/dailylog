@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task_id: 1
+  started_at: 2016-12-01 22:55:16
+  finished_at: 2016-12-01 22:55:16
+  spent_hours: 1.5
+
+two:
+  task_id: 1
+  started_at: 2016-12-01 22:55:16
+  finished_at: 2016-12-01 22:55:16
+  spent_hours: 1.5
