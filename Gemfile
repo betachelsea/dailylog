@@ -14,6 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'slim-rails'
+gem 'aasm'
 
 # for server
 gem 'rb-readline'
