@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_tasks, only: [:index]
+  before_action :set_tasks, only: [:index, :create]
 
   # GET /tasks
   # GET /tasks.json
@@ -32,7 +32,7 @@ class TasksController < ApplicationController
         format.html { redirect_to action: "index", notice: 'Task was successfully created.' }
         format.json { render :index, status: :created, location: @task }
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
