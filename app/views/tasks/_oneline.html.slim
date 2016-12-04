@@ -1,6 +1,6 @@
 tr
   td = task.subject
-  td = task.status
+  td = render "/tasks/status", task: task
   td = task.estimate_hours
   td
     = form_for TaskLog.new do |f|
