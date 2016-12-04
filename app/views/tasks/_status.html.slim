@@ -1,6 +1,6 @@
 - if task.doing?
-  .label.label-success = task.status
+  .label.label-doing = task.status
 - elsif task.yet?
-  .label.label-warning = task.status
+  .label.label-yet = task.status
 - else
-  .label.label-default = task.status
+  .label.label-done = task.status
