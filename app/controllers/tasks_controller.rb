@@ -1,12 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_tasks, only: [:index]
 
   # GET /tasks
   # GET /tasks.json
   def index
     @task = Task.new
-    @waiting_tasks = Task.yet.order(created_at: :desc)
-    @doing_tasks = Task.doing.order(created_at: :desc)
   end
 
   # GET /tasks/1
@@ -30,8 +29,8 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
+        format.html { redirect_to action: "index", notice: 'Task was successfully created.' }
+        format.json { render :index, status: :created, location: @task }
       else
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -63,14 +62,20 @@ class TasksController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_task
-      @task = Task.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  private def set_task
+    @task = Task.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def task_params
-      params.require(:task).permit(:subject, :status, :estimate_hours)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  private def task_params
+    params.require(:task).permit(:subject, :status, :estimate_hours)
+  end
+
+  # 表示用tasksを準備する
+  private def set_tasks
+    @waiting_tasks = Task.yet.order(created_at: :desc)
+    @doing_tasks = Task.doing.order(created_at: :desc)
+  end
+
 end
