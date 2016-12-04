@@ -14,22 +14,10 @@ table.table
       th
 
   tbody
-    - @tasks.each do |task|
-      tr
-        td = task.subject
-        td = task.status
-        td = task.estimate_hours
-        td
-          = form_for TaskLog.new do |f|
-            = f.hidden_field :task_id, value: task.id
-            = f.submit
-        td = link_to 'Show', task
-        td = link_to 'Edit', edit_task_path(task)
-        td = link_to 'Destroy', task, data: {:confirm => 'Are you sure?'}, :method => :delete
-      - task.task_logs.each do |task_log|
-        tr
-          td
-          td = task_log.started_at
+    - @doing_tasks.each do |task|
+      = render "/tasks/oneline", task: task
+    - @waiting_tasks.each do |task|
+      = render "/tasks/oneline", task: task
 
 br
 

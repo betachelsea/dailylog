@@ -5,7 +5,8 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @task = Task.new
-    @tasks = Task.all.order(created_at: :desc)
+    @waiting_tasks = Task.yet.order(created_at: :desc)
+    @doing_tasks = Task.doing.order(created_at: :desc)
   end
 
   # GET /tasks/1
