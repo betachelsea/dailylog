@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201135516) do
+ActiveRecord::Schema.define(version: 20161204040213) do
 
   create_table "daily_reports", force: :cascade do |t|
     t.datetime "date",       null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20161201135516) do
     t.float    "estimate_hours"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|

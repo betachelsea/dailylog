@@ -69,13 +69,14 @@ class TasksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   private def task_params
-    params.require(:task).permit(:subject, :status, :estimate_hours)
+    params.require(:task).permit(:subject, :status, :estimate_hours, :user_id)
   end
 
   # 表示用tasksを準備する
   private def set_tasks
-    @waiting_tasks = Task.yet.order(created_at: :desc)
-    @doing_tasks = Task.doing.order(created_at: :desc)
+    user_tasks = Task.by_user(current_user).order(created_at: :desc)
+    @waiting_tasks = user_tasks.yet
+    @doing_tasks = user_tasks.doing
   end
 
 end
