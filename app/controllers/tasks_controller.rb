@@ -75,7 +75,7 @@ class TasksController < ApplicationController
   # 表示用tasksを準備する
   private def set_tasks
     user_tasks = Task.by_user(current_user).order(created_at: :desc)
-    @waiting_tasks = user_tasks.yet
+    @waiting_tasks = user_tasks.waiting
     @doing_tasks = user_tasks.doing
   end
 
