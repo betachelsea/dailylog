@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204040213) do
+ActiveRecord::Schema.define(version: 20161220141443) do
 
   create_table "daily_reports", force: :cascade do |t|
     t.datetime "date",       null: false
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20161204040213) do
     t.float    "spent_hours", default: 0.0, null: false
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "user_id",                   null: false
   end
 
   create_table "tasks", force: :cascade do |t|
