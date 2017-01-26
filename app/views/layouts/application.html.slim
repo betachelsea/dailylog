@@ -13,6 +13,9 @@ html
         div
           = image_tag current_user.image, size: "24x24", alt: "#{current_user.name} さん"
           |#{current_user.name} さん
+    - if flash.present?
+      .container
+        = flash[:success] || flash[:alert] || flash[:notice]
     .container
       = yield
 

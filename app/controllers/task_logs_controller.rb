@@ -1,17 +1,16 @@
 class TaskLogsController < ApplicationController
 
   def create
-    @task_log = TaskLog.new(task_log_params)
-    @task_log.started_at = Time.zone.now
-    if @task_log.save
+    task_log = TaskLog.new(task_log_params)
+    if task_log.start_task!
       redirect_to tasks_path, notice: 'Task log was successfully created.'
     else
-      render 'tasks/new'
+      redirect_to tasks_path, error: 'failed create task_log.'
     end
   end
 
   private def task_log_params
-    params.require(:task_log).permit(:task_id)
+    params.require(:task_log).permit(:task_id, :user_id)
   end
 
 end

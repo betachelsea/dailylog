@@ -7,7 +7,7 @@ class Task < ActiveRecord::Base
     state :done
     state :suspending
 
-    event :start, before: :stop_all_my_task do
+    event :start, before: :before_start do
       transitions from: :yet, to: :doing
       transitions from: :suspending, to: :doing
     end
@@ -24,8 +24,19 @@ class Task < ActiveRecord::Base
   scope :by_user, ->(user) { where(user: user) }
   scope :waiting, -> { where.not(status: statuses[:doing]) }
 
-  # 同じユーザが持つタスクのdoingを無くす
-  def stop_all_my_task
+  def start_task!(user)
+    log = TaskLog.new(task_id: self.id, user_id: user.id)
+    log.start_task!
+
+  end
+
+  # @return [Task] 対象者が持つdoingタスク
+  def self.doing_of(user)
+    Task.doing.find_by(user: user)
+  end
+
+  private def before_start
+    # 同じユーザが持つタスクのdoingを無くす
     tasks = Task.where(user: self.user).doing
     tasks.each {|task| task.pause! }
   end
